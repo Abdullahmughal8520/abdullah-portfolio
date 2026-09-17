@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import academyDashboardImage from "../assets/academy-dashboard.png";
-import academyDemoVideo from "../assets/academy-demo.mp4";
+// import academyDemoVideo from "../assets/academy-demo.mp4";
 import currencyTrackerImage from "../assets/currency-tracker.png";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -44,7 +44,7 @@ const projects = [
 
 export default function Projects() {
   const sectionRef = useRef(null);
-  const [showDemo, setShowDemo] = useState(false);
+  // const [showDemo, setShowDemo] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -214,15 +214,14 @@ export default function Projects() {
 
             <div className="project-actions">
 
-              <button
-                type="button"
-                className="demo-button"
-                onClick={() => setShowDemo(true)}
-              >
-                WATCH DEMO
-                <span>↗</span>
-              </button>
-
+        <button
+  type="button"
+  className="demo-button"
+  onClick={() => setShowDemo(true)}
+>
+  WATCH DEMO
+  <span>↗</span>
+</button>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=abdullah.mughal8520@gmail.com&su=Academy%20Management%20System%20Inquiry"
                 target="_blank"
@@ -364,59 +363,6 @@ export default function Projects() {
       {/* =====================================================
           ACADEMY DEMO MODAL
       ===================================================== */}
-
-      {showDemo && (
-
-        <div
-          className="demo-modal"
-          onClick={() => setShowDemo(false)}
-        >
-
-          <div
-            className="demo-modal-content"
-            onClick={(event) => event.stopPropagation()}
-          >
-
-            <button
-              type="button"
-              className="demo-modal-close"
-              onClick={() => setShowDemo(false)}
-              aria-label="Close demo"
-            >
-              ×
-            </button>
-
-            <div className="demo-modal-header">
-
-              <div className="demo-modal-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <span>
-                ACADEMY MANAGEMENT SYSTEM — DEMO
-              </span>
-
-            </div>
-
-            <div className="demo-video-wrapper">
-
-            <video
-  src={academyDemoVideo}
-  autoPlay
-  muted
-  playsInline
-  controls={false}
-/>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
 
     </section>
   );
