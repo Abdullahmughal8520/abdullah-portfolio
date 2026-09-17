@@ -2406,3 +2406,395 @@ a {
     transform: translateY(-2px);
   }
 }
+
+/* =========================================================
+   CURRENCY PROJECT — HORIZONTAL LAYOUT
+========================================================= */
+
+.projects-grid-small {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 80px !important;
+  padding-top: 120px !important;
+}
+
+.small-project {
+  display: grid !important;
+  grid-template-columns: 1.55fr 0.75fr !important;
+  gap: 70px !important;
+  align-items: center !important;
+}
+
+/* =========================================================
+   CURRENCY VISUAL
+========================================================= */
+
+.small-project-visual {
+  width: 100% !important;
+  aspect-ratio: 1.55 !important;
+  position: relative !important;
+  margin-bottom: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Browser Window */
+
+.currency-preview {
+  position: absolute !important;
+
+  width: 82% !important;
+  height: 78% !important;
+
+  left: 9% !important;
+  top: 11% !important;
+
+  background: #080a0f !important;
+  border: 1px solid #242424 !important;
+
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+
+  transform: none !important;
+
+  z-index: 2 !important;
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.45),
+    0 0 80px rgba(139, 92, 246, 0.05) !important;
+}
+
+/* Browser Top Bar */
+
+.currency-window-bar {
+  width: 100% !important;
+  height: 42px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  padding: 0 15px !important;
+  box-sizing: border-box !important;
+
+  background: #0a0a0a !important;
+  border-bottom: 1px solid #242424 !important;
+
+  color: #666 !important;
+
+  font-size: 8px !important;
+  letter-spacing: 2px !important;
+}
+
+/* Window Dots */
+
+.currency-window-dots {
+  display: flex !important;
+  gap: 6px !important;
+  margin-right: 12px !important;
+}
+
+.currency-window-dots span {
+  display: block !important;
+
+  width: 7px !important;
+  height: 7px !important;
+
+  border-radius: 50% !important;
+
+  background: #444 !important;
+}
+
+/* Screenshot Area */
+
+.currency-screen {
+  width: 100% !important;
+  height: calc(100% - 42px) !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow: hidden !important;
+
+  background: #080a0f !important;
+}
+
+/* Actual Currency Screenshot */
+
+.currency-screen img {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* Right Side Information */
+
+.small-project-info {
+  width: 100% !important;
+  align-self: center !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .small-project {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .small-project-visual {
+    aspect-ratio: 1.35 !important;
+  }
+
+  .currency-preview {
+    width: 86% !important;
+    height: 78% !important;
+
+    left: 7% !important;
+    top: 11% !important;
+  }
+}
+.academy-screenshot {
+  width: 100%;
+  height: calc(100% - 42px);
+  overflow: hidden;
+  background: #080a0f;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.academy-screenshot img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   ACADEMY — DEMO BUTTON
+========================================================= */
+
+.demo-button {
+  border: 1px solid #333;
+  background: transparent;
+  color: #fff;
+
+  padding: 13px 20px;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.demo-button:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.demo-button span {
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   ACADEMY — DEMO MODAL
+========================================================= */
+
+.demo-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(0, 0, 0, 0.88);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* Modal Window */
+
+.demo-modal-content {
+  position: relative;
+
+  width: min(1100px, 95vw);
+  max-height: 90vh;
+
+  background: #080a0f;
+
+  border: 1px solid #292929;
+
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.7);
+
+  overflow: hidden;
+}
+
+
+/* Modal Header */
+
+.demo-modal-header {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 15px;
+
+  box-sizing: border-box;
+
+  background: #0a0a0a;
+
+  border-bottom: 1px solid #242424;
+
+  color: #666;
+
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+
+/* Modal Dots */
+
+.demo-modal-dots {
+  display: flex;
+
+  gap: 6px;
+
+  margin-right: 12px;
+}
+
+.demo-modal-dots span {
+  width: 7px;
+  height: 7px;
+
+  display: block;
+
+  border-radius: 50%;
+
+  background: #444;
+}
+
+
+/* Video */
+
+.demo-video-wrapper {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
+
+  overflow: hidden;
+}
+
+.demo-video-wrapper video {
+  width: 100%;
+  max-height: calc(90vh - 42px);
+
+  display: block;
+
+  object-fit: contain;
+
+  background: #000;
+}
+
+
+/* Close Button */
+
+.demo-modal-close {
+  position: absolute;
+
+  top: 8px;
+  right: 10px;
+
+  z-index: 10;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid #333;
+
+  background: #111;
+
+  color: #aaa;
+
+  font-size: 20px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.demo-modal-close:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .demo-modal {
+    padding: 15px;
+  }
+
+  .demo-modal-content {
+    width: 100%;
+  }
+
+  .demo-modal-header {
+    padding-right: 50px;
+    font-size: 7px;
+  }
+
+  .demo-modal-close {
+    top: 7px;
+    right: 8px;
+  }
+
+}

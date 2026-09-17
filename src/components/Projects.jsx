@@ -1,6 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import academyDashboardImage from "../assets/academy-dashboard.png";
+import academyDemoVideo from "../assets/academy-demo.mp4";
+import currencyTrackerImage from "../assets/currency-tracker.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,80 +15,82 @@ const projects = [
     title: "Academy",
     titleAccent: "Management System",
     description:
-      "A complete management platform designed to simplify academy operations, student records, teachers, schedules, attendance, exams and results.",
-    tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
+      "A complete academy management platform designed to simplify student, teacher, academic, attendance, examination, scheduling and fee management.",
+    tech: ["LARAVEL", "PHP", "MYSQL", "BOOTSTRAP"],
+    features: [
+      "STUDENT MANAGEMENT",
+      "TEACHER MANAGEMENT",
+      "ATTENDANCE",
+      "EXAMS & RESULTS",
+      "SCHEDULES",
+      "FEES",
+    ],
     featured: true,
   },
   {
     number: "02",
-    category: "BUSINESS WEBSITE",
-    title: "Modern",
-    titleAccent: "Business Platform",
-    description:
-      "A professional digital platform focused on presenting services, building trust and creating a strong online presence.",
-    tech: ["HTML", "CSS", "JavaScript", "PHP"],
-    featured: false,
-  },
-  {
-    number: "03",
     category: "WEB APPLICATION",
-    title: "API",
-    titleAccent: "Based Application",
+    title: "Currency",
+    titleAccent: "Live Tracker",
     description:
-      "A dynamic web application connected with external APIs to deliver interactive and real-time information.",
-    tech: ["React", "JavaScript", "REST API"],
-    featured: false,
+      "A modern currency tracking application with live exchange rates, historical charts, currency conversion, favorites and a simulated paper trading experience.",
+    tech: ["REACT", "JAVASCRIPT", "API", "RECHARTS"],
+    liveUrl: "https://currency-live-tracker.vercel.app/",
+    githubUrl:
+      "https://github.com/Abdullahmughal8520/currency-live-tracker",
+    image: currencyTrackerImage,
   },
 ];
 
-function Projects() {
+export default function Projects() {
   const sectionRef = useRef(null);
+  const [showDemo, setShowDemo] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".projects-label", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
         y: 30,
         opacity: 0,
         duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".projects-label",
+          start: "top 85%",
+        },
       });
 
       gsap.from(".projects-title-line", {
-        scrollTrigger: {
-          trigger: ".projects-heading",
-          start: "top 80%",
-        },
-        y: 100,
+        y: 80,
         opacity: 0,
         duration: 1,
         stagger: 0.12,
         ease: "power4.out",
+        scrollTrigger: {
+          trigger: ".projects-title",
+          start: "top 80%",
+        },
       });
 
       gsap.from(".featured-project", {
-        scrollTrigger: {
-          trigger: ".featured-project",
-          start: "top 78%",
-        },
-        y: 100,
+        y: 70,
         opacity: 0,
         duration: 1.1,
-        ease: "power4.out",
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".featured-project",
+          start: "top 82%",
+        },
       });
 
       gsap.from(".small-project", {
-        scrollTrigger: {
-          trigger: ".projects-grid-small",
-          start: "top 80%",
-        },
         y: 70,
         opacity: 0,
-        duration: 0.9,
-        stagger: 0.15,
+        duration: 1,
         ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".small-project",
+          start: "top 82%",
+        },
       });
     }, sectionRef);
 
@@ -92,202 +98,326 @@ function Projects() {
   }, []);
 
   return (
-    <section className="projects-new" id="work" ref={sectionRef}>
-      <div className="projects-label">
-        <span>02</span>
-        SELECTED WORK
-      </div>
+    <section
+      className="projects-new"
+      id="work"
+      ref={sectionRef}
+    >
+      <div className="projects-container">
 
-      <div className="projects-heading">
-        <span className="projects-title-line">SELECTED</span>
-        <span className="projects-title-line">
-          <span className="projects-outline">PROJECTS.</span>
-        </span>
-      </div>
+        {/* =====================================================
+            HEADER
+        ===================================================== */}
 
-      <div className="featured-project">
-        <div className="featured-visual">
-          <div className="dashboard-window">
-            <div className="window-bar">
-              <div className="window-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+        <div className="projects-header">
+          <div className="projects-label">
+            SELECTED PROJECTS.
+          </div>
 
-              <span className="window-title">
-                ACADEMY MANAGEMENT SYSTEM
+          <h2 className="projects-title">
+            <span className="projects-title-line">
+              BUILT TO
+            </span>
+
+            <span className="projects-title-line">
+              <span className="projects-title-accent">
+                SOLVE.
               </span>
-            </div>
-
-            <div className="dashboard-body">
-              <div className="dashboard-sidebar">
-                <div className="fake-logo">AMS.</div>
-
-                <div className="side-item active"></div>
-                <div className="side-item"></div>
-                <div className="side-item"></div>
-                <div className="side-item"></div>
-                <div className="side-item"></div>
-              </div>
-
-              <div className="dashboard-main">
-                <div className="dashboard-header">
-                  <div>
-                    <small>OVERVIEW</small>
-                    <strong>Dashboard</strong>
-                  </div>
-
-                  <div className="fake-profile"></div>
-                </div>
-
-                <div className="stat-grid">
-                  <div className="fake-stat">
-                    <span>STUDENTS</span>
-                    <strong>1,248</strong>
-                    <i></i>
-                  </div>
-
-                  <div className="fake-stat">
-                    <span>TEACHERS</span>
-                    <strong>48</strong>
-                    <i></i>
-                  </div>
-
-                  <div className="fake-stat">
-                    <span>CLASSES</span>
-                    <strong>32</strong>
-                    <i></i>
-                  </div>
-                </div>
-
-                <div className="chart-area">
-                  <div className="chart-header">
-                    <span>STUDENT OVERVIEW</span>
-                    <span>2026</span>
-                  </div>
-
-                  <div className="chart">
-                    <div className="chart-line"></div>
-
-                    <span className="chart-point point-one"></span>
-                    <span className="chart-point point-two"></span>
-                    <span className="chart-point point-three"></span>
-                    <span className="chart-point point-four"></span>
-                    <span className="chart-point point-five"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="visual-caption">
-            <span>01 / 03</span>
-            <span>ACADEMY PLATFORM</span>
-          </div>
+            </span>
+          </h2>
         </div>
 
-        <div className="featured-info">
-          <div className="project-number">01</div>
+        {/* =====================================================
+            FEATURED PROJECT — ACADEMY
+        ===================================================== */}
 
-          <div className="project-category">
-            WEB APPLICATION
-          </div>
+        <div className="featured-project">
 
-          <h3>
-            Academy
-            <span>Management System</span>
-          </h3>
+          {/* LEFT — PROJECT PREVIEW */}
 
-          <p>
-            A full-stack academy management platform built to
-            bring students, teachers and administration into one
-            organized digital system.
-          </p>
+          <div className="featured-project-visual">
 
-          <div className="project-features">
-            <span>STUDENT MANAGEMENT</span>
-            <span>TEACHER MANAGEMENT</span>
-            <span>ATTENDANCE</span>
-            <span>EXAMS & RESULTS</span>
-            <span>SCHEDULES</span>
-            <span>FEES</span>
-          </div>
+            <div className="dashboard-window">
 
-          <div className="project-tech">
-           <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=abdullah.mughal8520@gmail.com&su=Academy%20Management%20System%20Inquiry"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="case-study-button"
->
-  VIEW CASE STUDY
-  <span>↗</span>
-</a>
-          </div>
+              <div className="window-bar">
 
- 
-        </div>
-      </div>
-
-      <div className="projects-grid-small">
-        {projects.slice(1).map((project) => (
-          <article className="small-project" key={project.number}>
-            <div className="small-project-visual">
-              <div className="abstract-screen">
-                <div className="abstract-header"></div>
-
-                <div className="abstract-columns">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-
-                <div className="abstract-chart">
-                  <span></span>
-                  <span></span>
+                <div className="window-dots">
                   <span></span>
                   <span></span>
                   <span></span>
                 </div>
+
+                <span className="window-title">
+                  ACADEMY MANAGEMENT SYSTEM
+                </span>
+
               </div>
 
-              <span className="small-project-number">
-                {project.number}
-              </span>
+              <div className="academy-screenshot">
+                <img
+                  src={academyDashboardImage}
+                  alt="Academy Management System Dashboard"
+                />
+              </div>
+
             </div>
 
-            <div className="small-project-info">
-              <div className="project-category">
-                {project.category}
-              </div>
+            <div className="visual-caption">
+              <span>01 / ACADEMY MANAGEMENT SYSTEM</span>
+              <span>WEB APPLICATION</span>
+            </div>
 
-              <h3>
-                {project.title}
-                <span>{project.titleAccent}</span>
-              </h3>
+          </div>
 
-              <p>{project.description}</p>
+          {/* RIGHT — PROJECT INFO */}
 
-              <div className="project-tech">
+          <div className="featured-project-info">
+
+            <div className="project-number">
+              {projects[0].number}
+            </div>
+
+            <div className="project-category">
+              {projects[0].category}
+            </div>
+
+            <h3 className="featured-project-title">
+              {projects[0].title}
+              <span>{projects[0].titleAccent}</span>
+            </h3>
+
+            <p className="featured-project-description">
+              {projects[0].description}
+            </p>
+
+            {/* FEATURES */}
+
+            <div className="project-features">
+              {projects[0].features.map((feature) => (
+                <span key={feature}>
+                  {feature}
+                </span>
+              ))}
+            </div>
+
+            {/* TECH */}
+
+            <div className="project-tech">
+              {projects[0].tech.map((tech) => (
+                <span key={tech}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* ACTIONS */}
+
+            <div className="project-actions">
+
+              <button
+                type="button"
+                className="demo-button"
+                onClick={() => setShowDemo(true)}
+              >
+                WATCH DEMO
+                <span>↗</span>
+              </button>
+
               <a
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=abdullah.mughal8520@gmail.com&su=Project%20Inquiry"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="small-project-link"
->
-  EXPLORE PROJECT
-  <span>↗</span>
-</a>
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=abdullah.mughal8520@gmail.com&su=Academy%20Management%20System%20Inquiry"
+                target="_blank"
+                rel="noreferrer"
+                className="case-study-button"
+              >
+                VIEW CASE STUDY
+                <span>↗</span>
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+
+        {/* =====================================================
+            OTHER PROJECTS
+        ===================================================== */}
+
+        <div className="projects-grid-small">
+
+          {projects
+            .filter((project) => !project.featured)
+            .map((project) => (
+
+              <article
+                className="small-project"
+                key={project.number}
+              >
+
+                {/* PROJECT VISUAL */}
+
+                <div className="small-project-visual">
+
+                  {project.image ? (
+
+                    <div className="currency-preview">
+
+                      <div className="currency-window-bar">
+
+                        <div className="currency-window-dots">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
+
+                        <span>
+                          CURRENCY LIVE TRACKER
+                        </span>
+
+                      </div>
+
+                      <div className="currency-screen">
+
+                        <img
+                          src={project.image}
+                          alt={`${project.title} ${project.titleAccent}`}
+                        />
+
+                      </div>
+
+                    </div>
+
+                  ) : (
+
+                    <div className="abstract-screen">
+                      <span>
+                        {project.title}
+                      </span>
+                    </div>
+
+                  )}
+
+                  <span className="small-project-number">
+                    {project.number}
+                  </span>
+
+                </div>
+
+                {/* PROJECT INFO */}
+
+                <div className="small-project-info">
+
+                  <div className="project-category">
+                    {project.category}
+                  </div>
+
+                  <h3 className="small-project-title">
+                    {project.title}
+                    <span>{project.titleAccent}</span>
+                  </h3>
+
+                  <p className="small-project-description">
+                    {project.description}
+                  </p>
+
+                  <div className="project-tech">
+                    {project.tech.map((tech) => (
+                      <span key={tech}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="small-project-actions">
+
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="case-study-button"
+                    >
+                      LIVE DEMO
+                      <span>↗</span>
+                    </a>
+
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="case-study-button"
+                    >
+                      GITHUB
+                      <span>↗</span>
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            ))}
+
+        </div>
+
+      </div>
+
+      {/* =====================================================
+          ACADEMY DEMO MODAL
+      ===================================================== */}
+
+      {showDemo && (
+
+        <div
+          className="demo-modal"
+          onClick={() => setShowDemo(false)}
+        >
+
+          <div
+            className="demo-modal-content"
+            onClick={(event) => event.stopPropagation()}
+          >
+
+            <button
+              type="button"
+              className="demo-modal-close"
+              onClick={() => setShowDemo(false)}
+              aria-label="Close demo"
+            >
+              ×
+            </button>
+
+            <div className="demo-modal-header">
+
+              <div className="demo-modal-dots">
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
 
-             
+              <span>
+                ACADEMY MANAGEMENT SYSTEM — DEMO
+              </span>
+
             </div>
-          </article>
-        ))}
-      </div>
+
+            <div className="demo-video-wrapper">
+
+            <video
+  src={academyDemoVideo}
+  autoPlay
+  muted
+  playsInline
+  controls={false}
+/>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
     </section>
   );
 }
-
-export default Projects;
